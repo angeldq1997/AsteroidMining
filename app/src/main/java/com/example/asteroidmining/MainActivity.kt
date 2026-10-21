@@ -2,9 +2,10 @@ package com.example.asteroidmining
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asteroidmining.databinding.ActivityMainBinding
+import com.google.android.material.button.MaterialButton
 import kotlin.math.PI
 import kotlin.math.pow
 
@@ -23,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun listenersButtons() {
+
         binding.bSelectElementAgain.setOnClickListener {
             binding.linlaySelected.visibility = View.GONE
             binding.gbtnElements.visibility = View.VISIBLE
@@ -34,69 +36,75 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun elementButtons() {
-        configButton(binding.bMagnesium, R.string.e_density_magnesium.toString(), R.string.e_price_magnesium.toString(), R.drawable.mg)
-        configButton(binding.bAluminium, R.string.e_density_aluminium.toString(), R.string.e_price_aluminium.toString(), R.drawable.al)
-        configButton(binding.bSilicon, R.string.e_density_silicon.toString(), R.string.e_price_silicon.toString(), R.drawable.si)
-        configButton(binding.bTitanium, R.string.e_density_titanium.toString(), R.string.e_price_titanium.toString(), R.drawable.ti)
-        configButton(binding.bChromium, R.string.e_density_chromium.toString(), R.string.e_price_chromium.toString(), R.drawable.cr)
-        configButton(binding.bIron, R.string.e_density_iron.toString(), R.string.e_price_iron.toString(), R.drawable.fe)
-        configButton(binding.bCobalt, R.string.e_density_cobalt.toString(), R.string.e_price_cobalt.toString(), R.drawable.co)
-        configButton(binding.bNickel, R.string.e_density_nickel.toString(), R.string.e_price_nickel.toString(), R.drawable.ni)
-        configButton(binding.bCopper, R.string.e_density_copper.toString(), R.string.e_price_copper.toString(), R.drawable.cu)
-        configButton(binding.bSilver, R.string.e_density_silver.toString(), R.string.e_price_silver.toString(), R.drawable.ag)
-        configButton(binding.bGold, R.string.e_density_gold.toString(), R.string.e_price_gold.toString(), R.drawable.au)
-        configButton(binding.bTungsten, R.string.e_density_tungsten.toString(), R.string.e_price_tungsten.toString(), R.drawable.w)
+        configButton(binding.bMagnesium, 1.738, 1.79, R.drawable.mg)
+        configButton(binding.bAluminium, 2.698 , 2.32 , R.drawable.al)
+        configButton(binding.bSilicon, 2.3296, 1.70, R.drawable.si)
+        configButton(binding.bTitanium,4.5 , 11.1, R.drawable.ti)
+        configButton(binding.bChromium, 7.15,9.4 , R.drawable.cr)
+        configButton(binding.bIron, 7.874, 0.424, R.drawable.fe)
+        configButton(binding.bCobalt, 8.86,32.8 , R.drawable.co)
+        configButton(binding.bNickel, 8.912, 13.9, R.drawable.ni)
+        configButton(binding.bCopper,8.933 , 6.00, R.drawable.cu)
+        configButton(binding.bSilver, 10.501,521.0 , R.drawable.ag)
+        configButton(binding.bGold, 19.282, 75430.0, R.drawable.au)
+        configButton(binding.bTungsten, 19.3, 35.3, R.drawable.w)
 
     }
 
-    private fun configButton(button: Button, density : String, price : String, image : Int) {
+    private fun configButton(button: MaterialButton, density : Double, price : Double, image : Int) {
          button.setOnClickListener{
+
              binding.gbtnElements.visibility = View.GONE
              binding.gbtnElements2.visibility = View.GONE
              binding.gbtnElements3.visibility = View.GONE
              binding.linlaySelected.visibility = View.VISIBLE
 
-             binding.tvNDensityElement.text = density
-             var radius : Double = binding.sliderRadius.value.toDouble()
-             var volume : Double = ((4.0/3.0) * PI * radius.pow(3.0))
+             binding.tvNDensityElement.text = density.toString()
+
+             var radius : Int = binding.sliderRadius.value.toInt()
+             var volume : Int = ((4/3) * PI * (radius*radius*radius)).toInt()
              binding.tvNVolumeElement.text = volume.toString()
-             var mass : Double = (density.toDouble() * volume)
+             var mass : Double = density * volume
              binding.tvNMassElement.text = mass.toString()
-             binding.tvNPrice.text = price
+             binding.tvNPrice.text = price.toString()
 
              binding.ivElement.setImageResource(image)
-             recalculatePrice()
+             recalculatePrice(price, mass)
         }
     }
 
-    private fun recalculatePrice() {
+    private fun recalculatePrice(price : Double, mass : Double) {
         if (checkValidData()){
-            var price : Double = binding.tvNPrice.toString().toDouble()
-            var mass : Double = binding.tvNMassElement.toString().toDouble()
-            var total : Double = price*mass
+            var total = (price*mass).toLong()
+
             when (total){
-                in 1.0..999999.99 -> {
+                in 1..999999 -> {
                     binding.tvNTotal.text = total.toString()
                 }
 
-                in 999999.99..9999999.99 -> {
-                    total /= 1000.0
-                    var totalText : String = "$total M"
-                    binding.tvNTotal.text = totalText
+                in 999999..999999999 -> {
+                    total /= 1000000
+                    binding.tvFinalPrice.setText(R.string.total_m)
+                    binding.tvNTotal.text = total.toString()
                 }
 
-                in 9999999.99..999999999.99 -> {
-                    total /= 1000000.0
-                    var totalText : String = "$total B"
-                    binding.tvNTotal.text = totalText
+                in 999999999..999999999999 -> {
+                    total /= 1000000000
+                    binding.tvFinalPrice.setText(R.string.total_b)
+                    binding.tvNTotal.text = total.toString()
                 }
 
-                in 999999999.99..999999999999.99 -> {
-                    total /= 1000000.0
-                    var totalText : String = "$total T"
-                    binding.tvNTotal.text = totalText
+                in 999999999999..999999999999999 -> {
+                    total /= 1000000000000
+                    binding.tvFinalPrice.setText(R.string.total_t)
+                    binding.tvNTotal.text = total.toString()
                 }
-                else -> binding.tvNTotal.setText(R.string.exceeded)
+                else -> {
+                    val toast = Toast.makeText(this,R.string.too_large, Toast.LENGTH_LONG)
+                    toast.show()
+                    binding.tvNTotal.setText(R.string.exceeded)
+                }
+
             }
             binding.tvNTotal.text = total.toString()
 
