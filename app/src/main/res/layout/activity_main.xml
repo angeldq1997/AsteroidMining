@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stars_background"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButtonGroup
+            android:id="@+id/gbtn_elements"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:checkedButton="@id/magnesium"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/magnesium"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/e_letter_magnesium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/aluminium"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/e_letter_aluminium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/silicon"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/e_letter_silicon" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/titanium"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/e_letter_titanium" />
+        </com.google.android.material.button.MaterialButtonGroup>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider_radius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stepSize="10"
+            android:value="500"
+            android:valueFrom="0"
+            android:valueTo="1000" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="100"
+            android:value="500"
+            android:valueFrom="0"
+            android:valueTo="1000" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

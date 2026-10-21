@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Asteroid Mining</string>
+    
+    <string name="select_element">Select element: </string>
+    <string name="name">Name: </string>
+    <string name="density">Density: </string>
+    <string name="volume">Volume: </string>
+    <string name="price">Price (USD/kg): </string>
+    <string name="select_radius">Select radius: </string>
+    <string name="purity">Purity (1 to 100%): </string>
+    
+    <string name="types_asteroids">More than three quarters (75%) of known asteroids belong to the carbonaceous (carbon-rich) C-group.
+        Very dark and mostly made of carbon, C-group asteroids are thought to be the most ancient, reflecting the very materials that existed when the Solar System formed.
+        They mostly live in the outer regions of the main asteroid belt.
+
+        Next, around a fifth (20%) of known asteroids are siliceous (or stony) S-group, composed of silicate rocks, including metal-bearing minerals.
+        Many S-group asteroids are fairly bright through reflection of sunlight, and they are mostly found in the inner regions of the main asteroid belt.
+
+        The rest – around 5% of asteroids – can’t be classified as either carbon-rich or stony.
+        They are highly diverse, some being rocky and some consisting of metals like nickel or iron. Some are very dark and some are very bright.
+        The metallic ones, for example Psyche, may be fragments of larger bodies that once had liquid cores, before they were shattered in collisions long ago.</string>
+
+    <string name="e_magnesium">Magnesium</string>
+    <string name="e_aluminium">Aluminium</string>
+    <string name="e_silicon">Silicon</string>
+    <string name="e_titanium">Titanium</string>
+    <string name="e_chromium">Chromium</string>
+    <string name="e_iron">Iron</string>
+    <string name="e_cobalt">Cobalt</string>
+    <string name="e_nickel">Nickel</string>
+    <string name="e_copper">Copper</string>
+    <string name="e_silver">Silver</string>
+    <string name="e_tungsten">Tungsten</string>
+    <string name="e_gold">Gold</string>
+
+    <string name="e_letter_magnesium">Mg</string>
+    <string name="e_letter_aluminium">A</string>
+    <string name="e_letter_silicon">Si</string>
+    <string name="e_letter_titanium">Ti</string>
+    <string name="e_letter_chromium">Cr</string>
+    <string name="e_letter_iron">Fe</string>
+    <string name="e_letter_cobalt">Co</string>
+    <string name="e_letter_nickel">Ni</string>
+    <string name="e_letter_copper">Cu</string>
+    <string name="e_letter_silver">Ag</string>
+    <string name="e_letter_tungsten">W</string>
+    <string name="e_letter_gold">Au</string>
+
+    <string name="e_density_magnesium">1.738</string>
+    <string name="e_density_aluminium">2.698</string>
+    <string name="e_density_silicon">2.3296</string>
+    <string name="e_density_titanium">4.5</string>
+    <string name="e_density_chromium">7.15</string>
+    <string name="e_density_iron">7.874</string>
+    <string name="e_density_cobalt">8.86</string>
+    <string name="e_density_nickel">8.912</string>
+    <string name="e_density_copper">8.933</string>
+    <string name="e_density_silver">10.501</string>
+    <string name="e_density_tungsten">19.3</string>
+    <string name="e_density_gold">19.282</string>
+
+    <string name="e_price_aluminium">1.79</string>
+    <string name="e_price_magnesium">2.32</string>
+    <string name="e_price_silicon">1.70</string>
+    <string name="e_price_titanium">11.1</string>
+    <string name="e_price_chromium">9.4</string>
+    <string name="e_price_iron">0.424</string>
+    <string name="e_price_cobalt">32.8</string>
+    <string name="e_price_nickel">13.9</string>
+    <string name="e_price_copper">6.00</string>
+    <string name="e_price_silver">521</string>
+    <string name="e_price_tungsten">35.3</string>
+    <string name="e_price_gold">75430</string>
+</resources>
