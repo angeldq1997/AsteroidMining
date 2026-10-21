@@ -5,10 +5,14 @@
     <string name="name">Name: </string>
     <string name="density">Density: </string>
     <string name="volume">Volume: </string>
+    <string name="mass">Mass: </string>
     <string name="price">Price (USD/kg): </string>
+    <string name="estimated_total">Total ($): </string>
     <string name="select_radius">Select radius: </string>
-    <string name="purity">Purity (1 to 100%): </string>
-    
+    <string name="select_purity">Select purity (1-100%):</string>
+    <string name="temp">CALCULATING...</string>
+    <string name="exceeded">MORE THAN 999T</string>
+
     <string name="types_asteroids">More than three quarters (75%) of known asteroids belong to the carbonaceous (carbon-rich) C-group.
         Very dark and mostly made of carbon, C-group asteroids are thought to be the most ancient, reflecting the very materials that existed when the Solar System formed.
         They mostly live in the outer regions of the main asteroid belt.
@@ -71,4 +75,5 @@
     <string name="e_price_silver">521</string>
     <string name="e_price_tungsten">35.3</string>
     <string name="e_price_gold">75430</string>
+    <string name="reselect_element">Select\nanother\nelement</string>
 </resources>
