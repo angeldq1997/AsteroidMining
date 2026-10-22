@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.asteroidmining.databinding.ActivityMainBinding
 import com.google.android.material.button.MaterialButton
 import kotlin.math.PI
-import kotlin.math.pow
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -21,6 +20,38 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListeners() {
         listenersButtons()
+
+        var previousValue = 50f
+
+        binding.sliderRadius.addOnChangeListener { slider, value, fromUser ->
+            if (value != previousValue) {
+
+            }
+            var radius: Int = binding.sliderRadius.value.toInt()
+            var volume: Int = ((4 / 3) * PI * (radius * radius * radius)).toInt()
+            binding.tvNVolumeElement.text = volume.toString()
+            binding.tvSelectRadius.text = radius.toString()
+            previousValue = value
+        }
+
+        listenersSliders()
+    }
+
+    private fun listenersSliders() {
+        var previousValue = 50f
+        var previousValue2 = 50f
+
+        binding.sliderRadius.addOnChangeListener { slider, value, fromUser ->
+            var radius: Int = binding.sliderRadius.value.toInt()
+            var volume: Int = ((4 / 3) * PI * (radius * radius * radius)).toInt()
+            binding.tvNVolumeElement.text = volume.toString()
+            binding.tvSelectRadius.text = radius.toString()
+        }
+
+        binding.sliderPurity.addOnChangeListener { slider, value, fromUser ->
+            var purity: Int = binding.sliderPurity.value.toInt()
+            binding.tvSelectPurity.text = purity.toString()
+        }
     }
 
     private fun listenersButtons() {
@@ -53,29 +84,37 @@ class MainActivity : AppCompatActivity() {
 
     private fun configButton(button: MaterialButton, density : Double, price : Double, image : Int) {
          button.setOnClickListener{
+             binding.ivElement.setImageResource(image)
+
+             binding.tvNDensityElement.text = density.toString()
 
              binding.gbtnElements.visibility = View.GONE
              binding.gbtnElements2.visibility = View.GONE
              binding.gbtnElements3.visibility = View.GONE
              binding.linlaySelected.visibility = View.VISIBLE
 
-             binding.tvNDensityElement.text = density.toString()
+             val mass = calculateMassRadiusVolume(density)
 
-             var radius : Int = binding.sliderRadius.value.toInt()
-             var volume : Int = ((4/3) * PI * (radius*radius*radius)).toInt()
-             binding.tvNVolumeElement.text = volume.toString()
-             var mass : Double = density * volume
-             binding.tvNMassElement.text = mass.toString()
              binding.tvNPrice.text = price.toString()
-
-             binding.ivElement.setImageResource(image)
              recalculatePrice(price, mass)
         }
     }
 
+    private fun calculateMassRadiusVolume(density : Double) : Double {
+        val density = density
+        var radius: Int = binding.sliderRadius.value.toInt()
+        var volume: Int = ((4 / 3) * PI * (radius * radius * radius)).toInt()
+        binding.tvNVolumeElement.text = volume.toString()
+        var mass: Double = density * volume
+        binding.tvNMassElement.text = mass.toString()
+        return mass;
+    }
+
     private fun recalculatePrice(price : Double, mass : Double) {
         if (checkValidData()){
-            var total = (price*mass).toLong()
+            var purity = binding.sliderPurity.value.toDouble()
+            purity /= 100
+            var total = (price*mass*purity).toLong()
 
             when (total){
                 in 1..999999 -> {
