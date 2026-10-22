@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stars_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".AsteroidInfoActivity">
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/gb_types"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:singleSelection="true"
+        app:checkedButton="@+id/mb_type_c"
+        app:selectionRequired="true"
+        >
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_type_c"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type_c"
+            app:backgroundTint="@color/deep_blue" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_type_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type_s"
+            app:backgroundTint="@color/deep_blue" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_other_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type_other"
+            app:backgroundTint="@color/deep_blue" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/deep_blue">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_asteroids"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/i_type_c"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <ImageView
+        android:id="@+id/iv_asteroids"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_marginBottom="10dp"
+        android:contentDescription="@string/app_name"
+        app:srcCompat="@drawable/types_asteroids" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_asteroids_system"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:contentDescription="@string/asteroid_system"
+            app:srcCompat="@drawable/asteroids_on_solar_system" />
+
+        <TextView
+            android:id="@+id/tv_asteroid_system"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="11dp"
+            android:layout_weight="1"
+            android:text="@string/asteroid_system_explanation"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/b_back_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/back" />
+
+</LinearLayout>

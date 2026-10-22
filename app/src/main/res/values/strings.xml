@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Asteroid Mining</string>
-    
+
+    <string name="see_info">See info</string>
+    <string name="see_details">DETAILS</string>
+    <string name="back">BACK</string>
+
+    <string name="going_home">Returning home</string>
+
     <string name="select_element">Select element: </string>
     <string name="name">Name: </string>
     <string name="density">Density: </string>
@@ -13,8 +19,30 @@
     <string name="total_t">Total (T $):</string>
     <string name="select_radius">Select radius: </string>
     <string name="select_purity">Select purity (1-100%):</string>
-    <string name="temp">CALCULATING...</string>
+    <string name="temp">0.0</string>
     <string name="exceeded">More than one quadrillion</string>
+
+    <string name="open_details">Opening details</string>
+    <string name="open_info">Opening info</string>
+
+    <string name="type_c">Type C</string>
+    <string name="type_s">Type S</string>
+    <string name="type_other">Other type</string>
+    <string name="i_type_c">
+        More than three quarters (75%) of known asteroids belong to the carbonaceous (carbon-rich) C-group.
+        Very dark and mostly made of carbon, C-group asteroids are thought to be the most ancient, reflecting the very materials that existed when the Solar System formed.
+        They mostly live in the outer regions of the main asteroid belt.
+    </string>
+    <string name="i_type_s">
+        Next, around a fifth (20%) of known asteroids are siliceous (or stony) S-group, composed of silicate rocks, including metal-bearing minerals.
+        Many S-group asteroids are fairly bright through reflection of sunlight, and they are mostly found in the inner regions of the main asteroid belt.
+    </string>
+    <string name="i_type_o">
+        The rest – around 5% of asteroids – can’t be classified as either carbon-rich or stony.
+        They are highly diverse, some being rocky and some consisting of metals like nickel or iron. Some are very dark and some are very bright.
+        The metallic ones, for example Psyche, may be fragments of larger bodies that once had liquid cores, before they were shattered in collisions long ago.
+    </string>
+
 
     <string name="types_asteroids">More than three quarters (75%) of known asteroids belong to the carbonaceous (carbon-rich) C-group.
         Very dark and mostly made of carbon, C-group asteroids are thought to be the most ancient, reflecting the very materials that existed when the Solar System formed.
@@ -25,7 +53,8 @@
 
         The rest – around 5% of asteroids – can’t be classified as either carbon-rich or stony.
         They are highly diverse, some being rocky and some consisting of metals like nickel or iron. Some are very dark and some are very bright.
-        The metallic ones, for example Psyche, may be fragments of larger bodies that once had liquid cores, before they were shattered in collisions long ago.</string>
+        The metallic ones, for example Psyche, may be fragments of larger bodies that once had liquid cores, before they were shattered in collisions long ago.
+    </string>
 
     <string name="e_magnesium">Magnesium</string>
     <string name="e_aluminium">Aluminium</string>
@@ -56,4 +85,6 @@
     <string name="too_large">The total price is too large</string>
 
     <string name="reselect_element">Select\nanother\nelement</string>
+    <string name="asteroid_system">Asteroids on our solar system</string>
+    <string name="asteroid_system_explanation">These rocky remnants mostly reside in the asteroid belt (seen in green/blue in the image on the left), a vast region between Mars and Jupiter where millions of asteroids orbit the Sun. \nIn this part of the Solar System, Jupiter’s immense gravitational pull prevented these rocks from coming together to form a planet. \nBut not all asteroids are confined to the asteroid belt.</string>
 </resources>
