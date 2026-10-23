@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.bSelectElementAgain.setOnClickListener {
             binding.linlaySelected.visibility = View.GONE
+            binding.dataCard.visibility = View.GONE
             binding.gbtnElements.visibility = View.VISIBLE
             binding.gbtnElements2.visibility = View.VISIBLE
             binding.gbtnElements3.visibility = View.VISIBLE
@@ -112,6 +113,7 @@ class MainActivity : AppCompatActivity() {
              binding.gbtnElements2.visibility = View.GONE
              binding.gbtnElements3.visibility = View.GONE
              binding.linlaySelected.visibility = View.VISIBLE
+             binding.dataCard.visibility = View.VISIBLE
 
              this.volume = ((4 / 3) * PI * (radius * radius * radius))
              this.mass = this.density*this.volume
