@@ -26,9 +26,15 @@ class AsteroidInfoActivity : AppCompatActivity() {
         }
 
         binding.mbTypeC.setOnClickListener {
-            binding.tvAsteroids
+            binding.tvAsteroids.setText(R.string.type_c)
+        }
+
+        binding.mbTypeS.setOnClickListener {
+            binding.tvAsteroids.setText(R.string.type_s)
+        }
+
+        binding.mbOtherType.setOnClickListener {
+            binding.tvAsteroids.setText(R.string.type_other)
         }
     }
-
-
 }
