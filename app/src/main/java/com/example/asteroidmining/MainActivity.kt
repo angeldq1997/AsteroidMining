@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
     private var mass : Double = 0.0
     private var volume : Double = 0.0
     private var price : Double = 0.0
-    private var radius : Double = 0.0
-    private var purity : Double = 0.0
+    private var radius : Double = 500.0
+    private var purity : Double = 50.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
                 volume = ((4 / 3) * PI * (radius * radius * radius))
                 binding.tvSelectRadius.text = radius.toString()
                 binding.tvNVolumeElement.text = volume.toString()
+                recalculateMass()
+                recalculatePrice()
                 previousValue = value_x
             }
         }
@@ -48,6 +50,8 @@ class MainActivity : AppCompatActivity() {
             if (value_y != previousValue2) {
                 purity = binding.sliderPurity.value.toDouble()
                 binding.tvSelectPurity.text = purity.toString()
+                recalculateMass()
+                recalculatePrice()
                 previousValue2 = value_y
             }
         }
@@ -102,26 +106,29 @@ class MainActivity : AppCompatActivity() {
 
     private fun configButton(button: MaterialButton, density : Double, price : Double, image : Int) {
          button.setOnClickListener{
-             this.density = density
-             this.price = price
-
-             binding.tvNDensityElement.text = this.density.toString()
-             binding.tvNPrice.text = this.price.toString()
              binding.ivElement.setImageResource(image)
-
              binding.gbtnElements.visibility = View.GONE
              binding.gbtnElements2.visibility = View.GONE
              binding.gbtnElements3.visibility = View.GONE
              binding.linlaySelected.visibility = View.VISIBLE
              binding.dataCard.visibility = View.VISIBLE
 
-             this.volume = ((4 / 3) * PI * (radius * radius * radius))
-             this.mass = this.density*this.volume
-             binding.tvNVolumeElement.text = this.volume.toString()
-             binding.tvNMassElement.text = this.mass.toString()
+             this.density = density
+             this.price = price
 
+             recalculateMass()
              recalculatePrice()
         }
+    }
+
+    private fun recalculateMass() {
+        binding.tvNDensityElement.text = this.density.toString()
+        binding.tvNPrice.text = this.price.toString()
+
+        this.volume = ((4 / 3) * PI * (radius * radius * radius))
+        this.mass = this.density * this.volume
+        binding.tvNVolumeElement.text = this.volume.toString()
+        binding.tvNMassElement.text = this.mass.toString()
     }
 
     private fun recalculatePrice() {
@@ -138,19 +145,16 @@ class MainActivity : AppCompatActivity() {
                 in 999999..999999999 -> {
                     total /= 1000000
                     binding.tvFinalPrice.setText(R.string.total_m)
-                    binding.tvNTotal.text = total.toString()
                 }
 
                 in 999999999..999999999999 -> {
                     total /= 1000000000
                     binding.tvFinalPrice.setText(R.string.total_b)
-                    binding.tvNTotal.text = total.toString()
                 }
 
                 in 999999999999..999999999999999 -> {
                     total /= 1000000000000
                     binding.tvFinalPrice.setText(R.string.total_t)
-                    binding.tvNTotal.text = total.toString()
                 }
                 else -> {
                     val toast = Toast.makeText(this,R.string.too_large, Toast.LENGTH_LONG)
@@ -160,13 +164,12 @@ class MainActivity : AppCompatActivity() {
 
             }
             binding.tvNTotal.text = total.toString()
-
         }
     }
 
     private fun checkValidData(): Boolean =
         !binding.tvNDensityElement.equals(R.string.temp) &&
                 !binding.tvNMassElement.equals(R.string.temp) &&
-                binding.tvNVolumeElement.equals(R.string.temp) &&
-                binding.tvNPrice.equals(R.string.temp)
+                !binding.tvNVolumeElement.equals(R.string.temp) &&
+                !binding.tvNPrice.equals(R.string.temp)
 }
