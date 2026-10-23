@@ -20,6 +20,8 @@
     <string name="select_radius">Select radius: </string>
     <string name="select_purity">Select purity (1-100%):</string>
     <string name="temp">0.0</string>
+
+    <string name="error_no_data">Error there aren\'t some fields detected</string>
     <string name="exceeded">More than one quadrillion</string>
 
     <string name="open_details">Opening details</string>

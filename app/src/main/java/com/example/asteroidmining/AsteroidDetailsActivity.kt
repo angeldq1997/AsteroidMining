@@ -1,7 +1,6 @@
 package com.example.asteroidmining
 
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.asteroidmining.databinding.ActivityAsteroidDetailsBinding
@@ -10,33 +9,52 @@ class AsteroidDetailsActivity : AppCompatActivity() {
     private lateinit var binding : ActivityAsteroidDetailsBinding
     companion object{
         const val PARAMETER_DENSITY = "parameter_density"
-        const val PARAMETER_MASS ="parameter_mass"
-        const val PARAMETER_VOLUME ="parameter_volume"
-        const val PARAMETER_PRICE ="parameter_price"
-        const val PARAMETER_PURITY ="parameter_purity"
+        const val PARAMETER_MASS = "parameter_mass"
+        const val PARAMETER_VOLUME = "parameter_volume"
+        const val PARAMETER_PRICE = "parameter_price"
+        const val PARAMETER_PURITY = "parameter_purity"
     }
+    private var density : Double = 0.0
+    private var mass : Double = 0.0
+    private var volume : Double = 0.0
+    private var price : Double = 0.0
+    private var purity : Double = 50.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAsteroidDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setComponents()
+        setData()
+        setImage()
         setListeners()
     }
 
-    private fun setComponents() {
-        binding.tvNPrice.text = PARAMETER_PRICE
-        binding.tvNDensityElement.text = PARAMETER_DENSITY
-        binding.tvNVolumeElement.text = PARAMETER_VOLUME
-        binding.tvMass.text = PARAMETER_MASS
+    private fun setImage() {
+        if (volume > 1000000 ){
+            binding.ivCatcher.setImageResource(R.drawable.a_catcher)
+        }else{
+            binding.ivCatcher.setImageResource(R.drawable.a_catcher_sheperd)
+        }
+    }
+
+    private fun setData() {
+        density = intent.getDoubleExtra("parameter_density", 0.0)
+        mass = intent.getDoubleExtra("parameter_mass", 0.0)
+        volume = intent.getDoubleExtra("parameter_volume", 0.0)
+        price = intent.getDoubleExtra("parameter_price", 0.0)
+        purity = intent.getDoubleExtra("parameter_purity", 0.0)
+
+        binding.tvNDensityElement.text = density.toString()
+        binding.tvNMassElement.text = mass.toString()
+        binding.tvNVolumeElement.text = volume.toString()
+        binding.tvNPrice.text = price.toString()
         recalculatePrice()
     }
 
     private fun recalculatePrice() {
         if (checkValidData()){
-            var purity = PARAMETER_PURITY.toDouble()
-            purity /= 100.0
-            var total = (PARAMETER_PRICE.toDouble()*PARAMETER_MASS.toDouble()*purity).toLong()
+            this.purity /= 100.0
+            var total = (this.price*this.mass*this.purity).toLong()
 
             when (total){
                 in 1..999999 -> {
@@ -46,19 +64,16 @@ class AsteroidDetailsActivity : AppCompatActivity() {
                 in 999999..999999999 -> {
                     total /= 1000000
                     binding.tvFinalPrice.setText(R.string.total_m)
-                    binding.tvNTotal.text = total.toString()
                 }
 
                 in 999999999..999999999999 -> {
                     total /= 1000000000
                     binding.tvFinalPrice.setText(R.string.total_b)
-                    binding.tvNTotal.text = total.toString()
                 }
 
                 in 999999999999..999999999999999 -> {
                     total /= 1000000000000
                     binding.tvFinalPrice.setText(R.string.total_t)
-                    binding.tvNTotal.text = total.toString()
                 }
                 else -> {
                     val toast = Toast.makeText(this,R.string.too_large, Toast.LENGTH_LONG)
@@ -68,7 +83,6 @@ class AsteroidDetailsActivity : AppCompatActivity() {
 
             }
             binding.tvNTotal.text = total.toString()
-
         }
     }
 

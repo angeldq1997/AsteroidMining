@@ -69,20 +69,19 @@ class MainActivity : AppCompatActivity() {
 
         binding.bSeeDetails.setOnClickListener {
             Toast.makeText(this, R.string.open_details, Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, AsteroidDetailsActivity::class.java).apply {
-                intent.putExtra(AsteroidDetailsActivity.PARAMETER_MASS, mass)
-                intent.putExtra(AsteroidDetailsActivity.PARAMETER_VOLUME, volume)
-                intent.putExtra(AsteroidDetailsActivity.PARAMETER_PRICE, price)
-                intent.putExtra(AsteroidDetailsActivity.PARAMETER_PURITY, purity)
-                intent.putExtra(AsteroidDetailsActivity.PARAMETER_DENSITY, density)
-            }
-            startActivity(intent)
+            val i = Intent(this, AsteroidDetailsActivity::class.java)
+            i.putExtra(AsteroidDetailsActivity.PARAMETER_MASS, mass)
+            i.putExtra(AsteroidDetailsActivity.PARAMETER_VOLUME, volume)
+            i.putExtra(AsteroidDetailsActivity.PARAMETER_PRICE, price)
+            i.putExtra(AsteroidDetailsActivity.PARAMETER_PURITY, purity)
+            i.putExtra(AsteroidDetailsActivity.PARAMETER_DENSITY, density)
+            startActivity(i)
         }
 
         binding.bSeeInfo.setOnClickListener {
             Toast.makeText(this, R.string.open_info, Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, AsteroidInfoActivity::class.java).apply { }
-            startActivity(intent)
+            val i : Intent = Intent(this, AsteroidInfoActivity::class.java).apply { }
+            startActivity(i)
         }
 
         elementButtons()
@@ -168,8 +167,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkValidData(): Boolean =
-        !binding.tvNDensityElement.equals(R.string.temp) &&
-                !binding.tvNMassElement.equals(R.string.temp) &&
-                !binding.tvNVolumeElement.equals(R.string.temp) &&
-                !binding.tvNPrice.equals(R.string.temp)
+        !binding.tvNDensityElement.equals("0.0") &&
+                !binding.tvNMassElement.equals("0.0") &&
+                !binding.tvNVolumeElement.equals("0.0") &&
+                !binding.tvNPrice.equals("0.0")
 }
